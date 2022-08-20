@@ -7,6 +7,7 @@ using Persistence.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,8 +19,12 @@ namespace Persistence
                                                                 IConfiguration configuration)
         {
             services.AddDbContext<BaseDbContext>(options =>
-                                                     options.UseSqlServer(
-                                                         configuration.GetConnectionString("RentACarCampConnectionString")));
+                                                     options.UseNpgsql(
+                                                         configuration.GetConnectionString("RentACarCampConnectionString"), option =>
+                                                         {
+                                                             option.MigrationsAssembly(Assembly.GetAssembly(typeof(BaseDbContext)).GetName().Name);
+                                                             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+                                                         }));
             services.AddScoped<IBrandRepository, BrandRepository>();
 
             return services;
