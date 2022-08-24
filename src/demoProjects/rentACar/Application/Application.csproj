@@ -8,10 +8,14 @@
 
   <ItemGroup>
     <Folder Include="Features\" />
+    <Folder Include="Features\Brands\Rules\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Features\Brands\Rules\" />
+  </ItemGroup>
 </Project>
