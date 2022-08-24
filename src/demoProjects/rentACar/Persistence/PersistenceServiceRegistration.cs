@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Contexts;
+using Persistence.Extensions;
 using Persistence.Repositories;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,9 @@ namespace Persistence
         {
             services.AddDbContext<BaseDbContext>(options =>
                                                      options.UseNpgsql(
-                                                         configuration.GetConnectionString("RentACarCampConnectionString"), option =>
+                                                         //configuration.GetConnectionString("RentACarCampConnectionString"),
+                                                         configuration.GetConnectionStringFromEnviroment(),
+                                                         option =>
                                                          {
                                                              option.MigrationsAssembly(Assembly.GetAssembly(typeof(BaseDbContext)).GetName().Name);
                                                              AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
