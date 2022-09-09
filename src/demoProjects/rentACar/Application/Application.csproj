@@ -3,19 +3,36 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Features\" />
     <Folder Include="Features\Brands\Rules\" />
+    <Folder Include="Features\Brands\Queries\" />
+    <Folder Include="Features\Brands\Models\" />
+    <Folder Include="Features\Brands\Queries\GetByIdBrand\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\..\..\corePackages\Core.Application\Core.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Features\Brands\Rules\" />
+    <None Remove="Features\Brands\Queries\" />
+    <None Remove="Features\Brands\Models\" />
+    <None Remove="MediatR" />
+    <None Remove="AutoMapper" />
+    <None Remove="MediatR.Extensions.Microsoft.DependencyInjection" />
+    <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+    <None Remove="FluentValidation.DependencyInjectionExtensions" />
+    <None Remove="Features\Brands\Queries\GetByIdBrand\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.1" />
   </ItemGroup>
 </Project>

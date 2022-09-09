@@ -21,8 +21,8 @@ namespace Persistence
         {
             services.AddDbContext<BaseDbContext>(options =>
                                                      options.UseNpgsql(
-                                                         //configuration.GetConnectionString("RentACarCampConnectionString"),
-                                                         configuration.GetConnectionStringFromEnviroment(),
+                                                         configuration.GetConnectionString("RentACarCampConnectionString"),
+                                                         //configuration.GetConnectionStringFromEnviroment(),
                                                          option =>
                                                          {
                                                              option.MigrationsAssembly(Assembly.GetAssembly(typeof(BaseDbContext)).GetName().Name);
